@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using TusCertificaciones.Data;
 namespace TusCertificaciones.Models;
 public class Estudiantes
 {
@@ -12,6 +15,9 @@ public class Estudiantes
     public string PrimerApellido { get; set; } = string.Empty;
 
     public string SegundoApellido{ get; set; } = string.Empty;
+
+    public string Email { get; set; } = string.Empty;
+    public string? UserId { get; set; }
 
     public int Edad { get; set; }
 
@@ -28,4 +34,7 @@ public class Estudiantes
     public string AnoAcademico { get; set; } = string.Empty;
 
     public string TandaSeccion { get; set; } = string.Empty;
+
+    [ForeignKey("UserId")]
+    public virtual ApplicationUser? User { get; set; }
 }
